@@ -1,6 +1,7 @@
 export * from './atoms/Button';
 export * from './atoms/Badge';
 export * from './atoms/PriceTag';
+export * from './atoms/ThemeToggle';
 export * from './molecules/ProductCard';
 export * from './molecules/FacetGroup';
 export * from './molecules/ActiveFilters';
@@ -16,6 +17,7 @@ export * from './molecules/CouponInput';
 export * from './molecules/AccountNav';
 export * from './molecules/SiteContextSwitcher';
 export * from './context/SiteContext';
+export * from './context/ThemeContext';
 export * from './organisms/OrderHistoryTable';
 export * from './organisms/AddressBookGrid';
 export * from './organisms/PaymentMethodsGrid';

@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useSiteContext } from '../context/SiteContext';
+import { useTheme } from '../context/ThemeContext';
 import { useCartStore } from '../store/useCartStore';
 
 export interface StorefrontDevToolsProps {
@@ -16,6 +17,7 @@ export const StorefrontDevTools: React.FC<StorefrontDevToolsProps> = ({ initialO
 
   const { activeSite, activeLanguage, activeCurrency, allSites, setBaseSite, setCurrency, setLanguage } =
     useSiteContext();
+  const { theme, setTheme } = useTheme();
   const { cart, totalItems, resetCart, applyCoupon, removeCoupon, isMiniCartOpen } = useCartStore();
 
   // Auth local storage snapshot
@@ -283,6 +285,48 @@ export const StorefrontDevTools: React.FC<StorefrontDevToolsProps> = ({ initialO
                         </span>
                       </button>
                     ))}
+                  </div>
+                </div>
+
+                {/* Theme Mode Switcher */}
+                <div>
+                  <label className="block text-[11px] font-bold text-slate-700 uppercase tracking-wider mb-1">
+                    Theme View Mode:
+                  </label>
+                  <div className="grid grid-cols-3 gap-1.5">
+                    <button
+                      type="button"
+                      onClick={() => setTheme('light')}
+                      className={`px-2.5 py-1.5 rounded-lg text-center text-xs font-semibold border transition-all cursor-pointer ${
+                        theme === 'light'
+                          ? 'bg-amber-50 border-amber-500 text-amber-800'
+                          : 'bg-white border-slate-200 hover:bg-slate-50 text-slate-700'
+                      }`}
+                    >
+                      ☀️ Light
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setTheme('dark')}
+                      className={`px-2.5 py-1.5 rounded-lg text-center text-xs font-semibold border transition-all cursor-pointer ${
+                        theme === 'dark'
+                          ? 'bg-slate-800 border-slate-900 text-amber-300'
+                          : 'bg-white border-slate-200 hover:bg-slate-50 text-slate-700'
+                      }`}
+                    >
+                      🌙 Dark
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setTheme('system')}
+                      className={`px-2.5 py-1.5 rounded-lg text-center text-xs font-semibold border transition-all cursor-pointer ${
+                        theme === 'system'
+                          ? 'bg-blue-50 border-blue-500 text-blue-700'
+                          : 'bg-white border-slate-200 hover:bg-slate-50 text-slate-700'
+                      }`}
+                    >
+                      💻 System
+                    </button>
                   </div>
                 </div>
               </div>

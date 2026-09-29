@@ -93,18 +93,18 @@ export const MiniCartDrawer: React.FC<MiniCartDrawerProps> = ({
       />
 
       <div className="fixed inset-y-0 right-0 max-w-full flex pl-6 sm:pl-10">
-        <div className="w-screen max-w-md bg-white shadow-2xl flex flex-col transform transition-transform duration-300 ease-out animate-slide-left">
+        <div className="w-screen max-w-md bg-white dark:bg-slate-900 shadow-2xl flex flex-col transform transition-transform duration-300 ease-out animate-slide-left text-slate-900 dark:text-slate-100">
           {/* Header */}
-          <div className="px-6 py-4 border-b border-slate-100 flex items-center justify-between bg-slate-50/80 backdrop-blur-sm">
+          <div className="px-6 py-4 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between bg-slate-50/80 dark:bg-slate-900/90 backdrop-blur-sm">
             <div className="flex items-center space-x-2.5">
-              <div className="w-8 h-8 rounded-lg bg-blue-100/70 text-blue-600 flex items-center justify-center font-bold text-sm shadow-sm">
+              <div className="w-8 h-8 rounded-lg bg-blue-100/70 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400 flex items-center justify-center font-bold text-sm shadow-sm">
                 🛒
               </div>
               <div>
-                <h2 id="mini-cart-title" className="text-base font-bold text-slate-900">
+                <h2 id="mini-cart-title" className="text-base font-bold text-slate-900 dark:text-white">
                   {t('cart.cartTitle')}
                 </h2>
-                <p className="text-xs text-slate-500 font-medium">
+                <p className="text-xs text-slate-500 dark:text-slate-400 font-medium">
                   {totalItems} {totalItems === 1 ? 'item' : 'items'} in your bag
                 </p>
               </div>
@@ -112,7 +112,7 @@ export const MiniCartDrawer: React.FC<MiniCartDrawerProps> = ({
             <button
               type="button"
               onClick={closeMiniCart}
-              className="p-1.5 text-slate-400 hover:text-slate-700 rounded-lg hover:bg-slate-200/60 transition-colors cursor-pointer"
+              className="p-1.5 text-slate-400 dark:text-slate-500 hover:text-slate-700 dark:hover:text-slate-200 rounded-lg hover:bg-slate-200/60 dark:hover:bg-slate-800 transition-colors cursor-pointer"
               aria-label="Close cart"
               title="Close (Esc)"
             >
@@ -124,26 +124,26 @@ export const MiniCartDrawer: React.FC<MiniCartDrawerProps> = ({
 
           {/* Free Shipping Progress Bar */}
           {entries.length > 0 && (
-            <div className="bg-blue-50/60 px-6 py-2.5 border-b border-blue-100/70 text-xs">
+            <div className="bg-blue-50/60 dark:bg-blue-950/30 px-6 py-2.5 border-b border-blue-100/70 dark:border-blue-900/30 text-xs">
               <div className="flex items-center justify-between font-semibold mb-1">
                 {progressPercent >= 100 ? (
-                  <span className="text-emerald-700 flex items-center space-x-1">
+                  <span className="text-emerald-700 dark:text-emerald-400 flex items-center space-x-1">
                     <span>🎉</span>
                     <span>Free Express Delivery unlocked!</span>
                   </span>
                 ) : (
-                  <span className="text-slate-700">
+                  <span className="text-slate-700 dark:text-slate-300">
                     Add{' '}
-                    <span className="text-blue-600 font-bold">
+                    <span className="text-blue-600 dark:text-blue-400 font-bold">
                       {currencySymbol}
                       {remainingForFreeShipping.toFixed(currencyIso === 'JPY' ? 0 : 2)}
                     </span>{' '}
-                    more for <span className="font-bold text-blue-700">Free Delivery</span>
+                    more for <span className="font-bold text-blue-700 dark:text-blue-400">Free Delivery</span>
                   </span>
                 )}
-                <span className="text-[11px] font-bold text-slate-500">{progressPercent}%</span>
+                <span className="text-[11px] font-bold text-slate-500 dark:text-slate-400">{progressPercent}%</span>
               </div>
-              <div className="w-full bg-slate-200 rounded-full h-1.5 overflow-hidden">
+              <div className="w-full bg-slate-200 dark:bg-slate-800 rounded-full h-1.5 overflow-hidden">
                 <div
                   className={`h-full rounded-full transition-all duration-500 ${
                     progressPercent >= 100 ? 'bg-emerald-500' : 'bg-blue-600'
@@ -155,14 +155,14 @@ export const MiniCartDrawer: React.FC<MiniCartDrawerProps> = ({
           )}
 
           {/* Cart Items List */}
-          <div className="flex-1 overflow-y-auto px-6 py-4 divide-y divide-slate-100">
+          <div className="flex-1 overflow-y-auto px-6 py-4 divide-y divide-slate-100 dark:divide-slate-800">
             {entries.length === 0 ? (
               <div className="h-full flex flex-col items-center justify-center text-center py-12">
-                <div className="w-16 h-16 rounded-2xl bg-blue-50 text-blue-500 flex items-center justify-center mb-4 text-3xl shadow-inner">
+                <div className="w-16 h-16 rounded-2xl bg-blue-50 dark:bg-blue-950/40 text-blue-500 dark:text-blue-400 flex items-center justify-center mb-4 text-3xl shadow-inner">
                   🛍️
                 </div>
-                <h3 className="text-base font-bold text-slate-900">{t('cart.emptyCart')}</h3>
-                <p className="text-xs text-slate-500 mt-1.5 max-w-xs leading-relaxed">
+                <h3 className="text-base font-bold text-slate-900 dark:text-white">{t('cart.emptyCart')}</h3>
+                <p className="text-xs text-slate-500 dark:text-slate-400 mt-1.5 max-w-xs leading-relaxed">
                   Your shopping bag is currently empty. Explore our catalog and add items to your cart.
                 </p>
                 <button
@@ -185,7 +185,7 @@ export const MiniCartDrawer: React.FC<MiniCartDrawerProps> = ({
                     {/* Fixed Size Thumbnail Container */}
                     <div
                       onClick={() => handleProductClick(entry.product.code)}
-                      className="w-20 h-20 shrink-0 bg-slate-50 rounded-xl overflow-hidden border border-slate-200/80 p-1 flex items-center justify-center cursor-pointer hover:border-blue-400 transition-colors"
+                      className="w-20 h-20 shrink-0 bg-slate-50 dark:bg-slate-800 rounded-xl overflow-hidden border border-slate-200/80 dark:border-slate-700 p-1 flex items-center justify-center cursor-pointer hover:border-blue-400 transition-colors"
                       title={entry.product.name}
                     >
                       {img?.url ? (
@@ -196,7 +196,7 @@ export const MiniCartDrawer: React.FC<MiniCartDrawerProps> = ({
                           loading="lazy"
                         />
                       ) : (
-                        <span className="text-slate-300 text-2xl">📦</span>
+                        <span className="text-slate-300 dark:text-slate-600 text-2xl">📦</span>
                       )}
                     </div>
 
@@ -204,19 +204,19 @@ export const MiniCartDrawer: React.FC<MiniCartDrawerProps> = ({
                     <div className="flex-1 min-w-0 flex flex-col justify-between self-stretch">
                       <div>
                         {/* Brand & Category Tag */}
-                        <div className="flex items-center space-x-2 text-[10px] uppercase font-bold text-slate-400 tracking-wider">
+                        <div className="flex items-center space-x-2 text-[10px] uppercase font-bold text-slate-400 dark:text-slate-500 tracking-wider">
                           {entry.product.brand && (
-                            <span className="text-blue-600 truncate max-w-[120px]">
+                            <span className="text-blue-600 dark:text-blue-400 truncate max-w-[120px]">
                               {entry.product.brand}
                             </span>
                           )}
-                          <span className="font-mono text-slate-400">SKU: {entry.product.code}</span>
+                          <span className="font-mono text-slate-400 dark:text-slate-500">SKU: {entry.product.code}</span>
                         </div>
 
-                        {/* Title (2 lines clamp without truncation) */}
+                        {/* Title */}
                         <h4
                           onClick={() => handleProductClick(entry.product.code)}
-                          className="text-xs sm:text-sm font-semibold text-slate-900 leading-snug line-clamp-2 hover:text-blue-600 transition-colors cursor-pointer mt-0.5"
+                          className="text-xs sm:text-sm font-semibold text-slate-900 dark:text-white leading-snug line-clamp-2 hover:text-blue-600 dark:hover:text-blue-400 transition-colors cursor-pointer mt-0.5"
                           title={entry.product.name}
                         >
                           {entry.product.name}
@@ -226,10 +226,10 @@ export const MiniCartDrawer: React.FC<MiniCartDrawerProps> = ({
                       {/* Quantity Stepper & Price Row */}
                       <div className="flex items-center justify-between mt-2.5 pt-1">
                         {/* Quantity Stepper */}
-                        <div className="flex items-center border border-slate-200 rounded-lg overflow-hidden bg-white shadow-xs">
+                        <div className="flex items-center border border-slate-200 dark:border-slate-700 rounded-lg overflow-hidden bg-white dark:bg-slate-800 shadow-xs">
                           <button
                             type="button"
-                            className="w-7 h-7 flex items-center justify-center text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-colors disabled:opacity-30 cursor-pointer text-sm font-bold"
+                            className="w-7 h-7 flex items-center justify-center text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors disabled:opacity-30 cursor-pointer text-sm font-bold"
                             disabled={isLoading}
                             onClick={() =>
                               updateEntry(entry.entryNumber, Math.max(0, entry.quantity - 1), activeSite.uid)
@@ -239,12 +239,12 @@ export const MiniCartDrawer: React.FC<MiniCartDrawerProps> = ({
                           >
                             −
                           </button>
-                          <span className="w-8 text-center text-xs font-bold text-slate-800 select-none">
+                          <span className="w-8 text-center text-xs font-bold text-slate-800 dark:text-slate-100 select-none">
                             {entry.quantity}
                           </span>
                           <button
                             type="button"
-                            className="w-7 h-7 flex items-center justify-center text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-colors disabled:opacity-30 cursor-pointer text-sm font-bold"
+                            className="w-7 h-7 flex items-center justify-center text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors disabled:opacity-30 cursor-pointer text-sm font-bold"
                             disabled={isLoading}
                             onClick={() =>
                               updateEntry(entry.entryNumber, entry.quantity + 1, activeSite.uid)
@@ -259,11 +259,11 @@ export const MiniCartDrawer: React.FC<MiniCartDrawerProps> = ({
                         {/* Line Item Pricing & Delete */}
                         <div className="flex items-center space-x-2.5">
                           <div className="text-right">
-                            <div className="text-xs sm:text-sm font-bold text-slate-900">
+                            <div className="text-xs sm:text-sm font-bold text-slate-900 dark:text-white">
                               <PriceTag price={entry.totalPrice} size="sm" />
                             </div>
                             {entry.quantity > 1 && entry.basePrice && (
-                              <div className="text-[10px] text-slate-400 mt-0.5">
+                              <div className="text-[10px] text-slate-400 dark:text-slate-500 mt-0.5">
                                 {entry.basePrice.formattedValue || `$${entry.basePrice.value.toFixed(2)}`} each
                               </div>
                             )}
@@ -274,7 +274,7 @@ export const MiniCartDrawer: React.FC<MiniCartDrawerProps> = ({
                             type="button"
                             onClick={() => removeEntry(entry.entryNumber, activeSite.uid)}
                             disabled={isLoading}
-                            className="p-1.5 text-slate-400 hover:text-red-500 hover:bg-red-50 rounded-lg transition-colors cursor-pointer disabled:opacity-30"
+                            className="p-1.5 text-slate-400 dark:text-slate-500 hover:text-red-500 dark:hover:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/30 rounded-lg transition-colors cursor-pointer disabled:opacity-30"
                             title="Remove item"
                             aria-label="Remove item"
                           >
@@ -298,15 +298,15 @@ export const MiniCartDrawer: React.FC<MiniCartDrawerProps> = ({
 
           {/* Footer Summary & CTAs */}
           {entries.length > 0 && (
-            <div className="p-5 sm:p-6 border-t border-slate-100 bg-slate-50/90 backdrop-blur-xs space-y-3.5">
-              <div className="space-y-1.5 text-xs text-slate-600">
+            <div className="p-5 sm:p-6 border-t border-slate-100 dark:border-slate-800 bg-slate-50/90 dark:bg-slate-900/90 backdrop-blur-xs space-y-3.5">
+              <div className="space-y-1.5 text-xs text-slate-600 dark:text-slate-400">
                 <div className="flex justify-between items-center">
                   <span>{t('cart.subtotal')}</span>
                   <PriceTag price={cart?.subTotal} size="sm" />
                 </div>
 
                 {cart?.totalDiscounts && cart.totalDiscounts.value > 0 && (
-                  <div className="flex justify-between items-center text-emerald-600 font-semibold">
+                  <div className="flex justify-between items-center text-emerald-600 dark:text-emerald-400 font-semibold">
                     <span className="flex items-center space-x-1">
                       <span>🏷️</span>
                       <span>Discounts applied</span>
@@ -315,7 +315,7 @@ export const MiniCartDrawer: React.FC<MiniCartDrawerProps> = ({
                   </div>
                 )}
 
-                <div className="flex justify-between items-center text-sm font-bold text-slate-900 pt-2 border-t border-slate-200">
+                <div className="flex justify-between items-center text-sm font-bold text-slate-900 dark:text-white pt-2 border-t border-slate-200 dark:border-slate-800">
                   <span>{t('cart.total')}</span>
                   <PriceTag price={cart?.totalPrice} size="md" />
                 </div>
@@ -331,7 +331,7 @@ export const MiniCartDrawer: React.FC<MiniCartDrawerProps> = ({
               </div>
 
               <div className="text-center">
-                <span className="text-[10px] text-slate-400">
+                <span className="text-[10px] text-slate-400 dark:text-slate-500">
                   🔒 Encrypted 256-bit SSL Checkout &bull; Free Returns
                 </span>
               </div>

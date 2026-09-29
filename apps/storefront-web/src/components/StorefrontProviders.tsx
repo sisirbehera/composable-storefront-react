@@ -3,7 +3,7 @@
 import React, { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { AuthProvider } from '@storefront/auth';
-import { SiteContextProvider, StorefrontDevTools } from '@storefront/ui';
+import { SiteContextProvider, ThemeProvider, StorefrontDevTools } from '@storefront/ui';
 import {
   SmartEditBridge,
   OutletProvider,
@@ -26,19 +26,21 @@ export const StorefrontProviders: React.FC<{ children: React.ReactNode }> = ({ c
   };
 
   return (
-    <SiteContextProvider onSiteChange={handleSiteChange}>
-      <SmartEditProvider defaultPerspective="PREVIEW">
-        <OutletProvider>
-          <AuthProvider>
-            <SmartEditToolbar />
-            {children}
-            <SmartEditEditModal />
-            <SmartEditComponentPickerModal />
-            <StorefrontDevTools />
-          </AuthProvider>
-        </OutletProvider>
-      </SmartEditProvider>
-    </SiteContextProvider>
+    <ThemeProvider defaultTheme="light">
+      <SiteContextProvider onSiteChange={handleSiteChange}>
+        <SmartEditProvider defaultPerspective="PREVIEW">
+          <OutletProvider>
+            <AuthProvider>
+              <SmartEditToolbar />
+              {children}
+              <SmartEditEditModal />
+              <SmartEditComponentPickerModal />
+              <StorefrontDevTools />
+            </AuthProvider>
+          </OutletProvider>
+        </SmartEditProvider>
+      </SiteContextProvider>
+    </ThemeProvider>
   );
 };
 

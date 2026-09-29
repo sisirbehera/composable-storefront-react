@@ -24,10 +24,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   const inStock = product.stock?.stockLevelStatus === 'inStock';
 
   return (
-    <div className="group relative bg-white border border-slate-200 rounded-xl overflow-hidden hover:shadow-lg transition-all duration-200 flex flex-col justify-between">
+    <div className="group relative bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden hover:shadow-lg dark:hover:shadow-slate-900/50 transition-all duration-200 flex flex-col justify-between">
       <div>
         <div
-          className="aspect-square bg-slate-100 overflow-hidden cursor-pointer relative"
+          className="aspect-square bg-slate-100 dark:bg-slate-800 overflow-hidden cursor-pointer relative"
           onClick={() => onSelect?.(product)}
         >
           {primaryImage ? (
@@ -37,7 +37,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
               className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300"
             />
           ) : (
-            <div className="w-full h-full flex items-center justify-center text-slate-400">
+            <div className="w-full h-full flex items-center justify-center text-slate-400 dark:text-slate-500">
               No Image
             </div>
           )}
@@ -50,11 +50,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         </div>
 
         <div className="p-4">
-          <div className="text-xs text-slate-500 mb-1">
+          <div className="text-xs text-slate-500 dark:text-slate-400 mb-1">
             {product.categories?.[0]?.name || product.code}
           </div>
           <h3
-            className="text-base font-semibold text-slate-900 group-hover:text-blue-600 transition-colors cursor-pointer line-clamp-2"
+            className="text-base font-semibold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors cursor-pointer line-clamp-2"
             onClick={() => onSelect?.(product)}
           >
             {product.name}
@@ -63,14 +63,14 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           {product.averageRating && (
             <div className="flex items-center mt-1.5 space-x-1">
               <span className="text-amber-400 text-sm">★</span>
-              <span className="text-xs font-bold text-slate-700">{product.averageRating.toFixed(1)}</span>
-              <span className="text-xs text-slate-400">({product.numberOfReviews || 0})</span>
+              <span className="text-xs font-bold text-slate-700 dark:text-slate-300">{product.averageRating.toFixed(1)}</span>
+              <span className="text-xs text-slate-400 dark:text-slate-500">({product.numberOfReviews || 0})</span>
             </div>
           )}
         </div>
       </div>
 
-      <div className="p-4 pt-0 border-t border-slate-100 mt-2 flex items-center justify-between">
+      <div className="p-4 pt-0 border-t border-slate-100 dark:border-slate-800 mt-2 flex items-center justify-between">
         <PriceTag price={product.price} size="md" />
         <Button
           size="sm"
