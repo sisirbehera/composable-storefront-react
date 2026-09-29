@@ -44,7 +44,7 @@ export const SmartEditToolbar: React.FC = () => {
           <span className="w-2.5 h-2.5 rounded-full bg-blue-500 animate-ping"></span>
           <span className="font-extrabold tracking-tight text-white flex items-center space-x-1.5">
             <span className="bg-blue-600 text-white px-1.5 py-0.5 rounded text-[10px] font-black uppercase tracking-wider">
-              SAP
+              R-CMS
             </span>
             <span>SmartEdit Studio</span>
           </span>

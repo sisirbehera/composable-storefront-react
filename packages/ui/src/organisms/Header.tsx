@@ -125,7 +125,7 @@ export const Header: React.FC<HeaderProps> = ({
       <div className="bg-slate-900 text-white text-xs py-1.5 px-4 font-medium flex flex-wrap items-center justify-between gap-2 border-b border-slate-800">
         <div className="flex items-center space-x-2">
           <span className="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-          <span>Composable Storefront (Spartacus React)</span>
+          <span>Composable Storefront (React Commerce)</span>
           <span className="text-slate-400 hidden md:inline">|</span>
           <span className="font-mono bg-slate-800 px-2 py-0.5 rounded text-amber-300 hidden md:inline">
             Source: {useMockData ? 'Mock Data Module (Fixtures)' : 'Live SAP Commerce (OCC API)'}

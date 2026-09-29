@@ -168,7 +168,7 @@ export const StorefrontDevTools: React.FC<StorefrontDevToolsProps> = ({ initialO
               <span className="text-base">🛠️</span>
               <div>
                 <h3 className="text-xs font-bold uppercase tracking-wider">Storefront DevTools</h3>
-                <p className="text-[10px] text-slate-400">Spartacus React / Next.js Runtime</p>
+                <p className="text-[10px] text-slate-400">React Commerce/ Next.js Runtime</p>
               </div>
             </div>
             <button

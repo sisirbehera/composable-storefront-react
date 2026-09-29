@@ -32,7 +32,7 @@ export const Footer: React.FC = () => {
 
           <div>
             <h4 className="text-xs font-semibold uppercase tracking-wider text-slate-200 mb-3">
-              Spartacus Parity
+              React Commerce: Spartacus Parity
             </h4>
             <ul className="space-y-2 text-xs text-slate-400">
               <li>CMS Page & Slot Template Engine</li>
