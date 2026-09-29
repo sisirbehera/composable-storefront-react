@@ -1,0 +1,22 @@
+{
+  "name": "spartacus-react-storefront",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "lint": "turbo run lint",
+    "typecheck": "turbo run typecheck",
+    "clean": "turbo run clean",
+    "generate:component": "node tools/scaffold-component.mjs",
+    "generate:adapter": "node tools/scaffold-adapter.mjs",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "devDependencies": {
+    "turbo": "^2.4.4",
+    "typescript": "^5.7.3",
+    "vitest": "^5.0.2"
+  },
+  "packageManager": "pnpm@12.4.2"
+}
