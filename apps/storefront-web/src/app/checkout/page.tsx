@@ -1,15 +1,18 @@
-import React from 'react';
-import { CheckoutClient } from './CheckoutClient';
+'use client';
 
-export const metadata = {
-  title: 'Checkout | Composable Storefront',
-  description: 'Secure multi-step checkout process.',
-};
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 
-export default function CheckoutPage() {
+export default function CheckoutIndexPage() {
+  const router = useRouter();
+
+  useEffect(() => {
+    router.replace('/checkout/shipping-address');
+  }, [router]);
+
   return (
-    <React.Suspense fallback={<div className="max-w-4xl mx-auto px-4 py-20 text-center text-slate-500">Loading checkout...</div>}>
-      <CheckoutClient />
-    </React.Suspense>
+    <div className="py-12 text-center text-xs text-slate-500 dark:text-slate-400">
+      Redirecting to shipping address...
+    </div>
   );
 }

@@ -2,7 +2,7 @@
 
 import React, { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { AuthProvider } from '@storefront/auth';
+import { AuthProvider, useAuth } from '@storefront/auth';
 import { SiteContextProvider, ThemeProvider, StorefrontDevTools } from '@storefront/ui';
 import {
   SmartEditBridge,
@@ -12,6 +12,34 @@ import {
   SmartEditEditModal,
   SmartEditComponentPickerModal,
 } from '@storefront/cms';
+
+/**
+ * SmartEdit Studio Authoring Tools:
+ * Restricts the authoring toolbar and editing modals to authorized CMS Admins.
+ * For demo/POC purposes, Alex Morgan is recognized as the authorized CMS Author.
+ */
+const SmartEditAdminBar: React.FC = () => {
+  const { authState } = useAuth();
+
+  const isAlexMorganOrAdmin =
+    authState.isAuthenticated &&
+    Boolean(
+      authState.user?.name?.toLowerCase().includes('alex morgan') ||
+      authState.user?.uid?.toLowerCase().includes('alex.morgan')
+    );
+
+  if (!isAlexMorganOrAdmin) {
+    return null;
+  }
+
+  return (
+    <>
+      <SmartEditToolbar authorName={authState.user?.name} />
+      <SmartEditEditModal />
+      <SmartEditComponentPickerModal />
+    </>
+  );
+};
 
 export const StorefrontProviders: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const router = useRouter();
@@ -31,10 +59,8 @@ export const StorefrontProviders: React.FC<{ children: React.ReactNode }> = ({ c
         <SmartEditProvider defaultPerspective="PREVIEW">
           <OutletProvider>
             <AuthProvider>
-              <SmartEditToolbar />
+              <SmartEditAdminBar />
               {children}
-              <SmartEditEditModal />
-              <SmartEditComponentPickerModal />
               <StorefrontDevTools />
             </AuthProvider>
           </OutletProvider>

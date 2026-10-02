@@ -4,7 +4,11 @@ import React from 'react';
 import { SmartEditPerspective } from '@storefront/core';
 import { useSmartEdit } from './SmartEditContext';
 
-export const SmartEditToolbar: React.FC = () => {
+export interface SmartEditToolbarProps {
+  authorName?: string;
+}
+
+export const SmartEditToolbar: React.FC<SmartEditToolbarProps> = ({ authorName }) => {
   const {
     perspective,
     setPerspective,
@@ -92,6 +96,14 @@ export const SmartEditToolbar: React.FC = () => {
           <span>●</span>
           <span>Approved</span>
         </span>
+
+        {/* Demo CMS Admin User */}
+        {authorName && (
+          <span className="hidden xl:inline-flex items-center space-x-1 text-[11px] text-blue-300 bg-blue-950/60 border border-blue-800/80 px-2.5 py-0.5 rounded-full font-medium">
+            <span>👤</span>
+            <span>{authorName} (CMS Admin)</span>
+          </span>
+        )}
       </div>
 
       {/* Right Controls: Overrides status, reset, minimize */}
